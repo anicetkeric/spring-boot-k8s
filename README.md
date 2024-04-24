@@ -1,1 +1,1 @@
-# spring-reactive-k8s
+# spring-boot-k8s

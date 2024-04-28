@@ -2,6 +2,7 @@
 package com.bootlabs.repository;
 
 import com.bootlabs.model.Book;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
@@ -16,6 +17,7 @@ import java.util.stream.IntStream;
  * 
  * @author @bootteam
  */
+@Slf4j
 @Repository
 public class BookRepository {
 
@@ -48,8 +50,8 @@ public class BookRepository {
         return books;
     }
 
-    public int deleteById(String id){
-        return 0;
+    public void deleteById(String id){
+        log.debug("Delete book with id: {}", id);
     }
 
 }

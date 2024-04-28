@@ -2,6 +2,7 @@
 package com.bootlabs.repository;
 
 import com.bootlabs.model.Author;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.stream.IntStream;
  * 
  * @author @bootteam
  */
+@Slf4j
 @Repository
 public class AuthorRepository {
 
@@ -44,8 +46,8 @@ public class AuthorRepository {
         return authors;
     }
 
-    public int deleteById(String id){
-        return 0;
+    public void deleteById(String id){
+        log.debug("Delete book with id: {}", id);
     }
 
 

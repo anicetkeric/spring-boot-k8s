@@ -1,0 +1,35 @@
+server:
+  port: 8080
+    # Allow the Spring context to close all active requests before shutting down the server
+    # Please ref: https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/reference/html/spring-boot-features.html#boot-features-graceful-shutdown
+  shutdown: graceful
+
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+  application:
+    name: spring-boot-k8s
+
+# Log incoming requests.
+logging:
+  level:
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
+
+management:
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+      probes:
+        enabled: true
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: ['env', 'health', 'info']
+
+

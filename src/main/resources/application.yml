@@ -33,3 +33,8 @@ management:
         include: ['env', 'health', 'info']
 
 
+application:
+  env:
+    db-host: ${host:N/A}
+    db-name: ${database:N/A}
+    debug: ${debug_mode:0}

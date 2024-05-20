@@ -7,47 +7,44 @@ import com.bootlabs.repository.AuthorRepository;
 import org.springframework.stereotype.Service;
 
 
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Service Implementation for managing {@link Author}.
+ *
  * @author @bootteam
  */
 @Service
 public class AuthorServiceImpl implements AuthorService {
 
-
     private final AuthorRepository repository;
 
     public AuthorServiceImpl(AuthorRepository repo) {
-         this.repository = repo;
+        this.repository = repo;
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public Author create(Author d) {
-        try {
-            return repository.save(d);
-
-        } catch (Exception ex) {
-            return null;
-        }
+    public Author create(Author author) {
+        return repository.save(author);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public Author update(Author d) {
-        try {
-            return repository.update(d);
-
-        } catch (Exception ex) {
-            return null;
+    public Author update(Author author) {
+        Author existingAuthor = repository.findById(author.getId()).orElse(null);
+        if (Objects.isNull(existingAuthor)) {
+            throw new RuntimeException("Author Id is not found");
         }
+        existingAuthor.setFirstname(author.getFirstname());
+        existingAuthor.setLastname(author.getLastname());
+
+        return repository.save(existingAuthor);
     }
 
     /**
@@ -55,12 +52,7 @@ public class AuthorServiceImpl implements AuthorService {
      */
     @Override
     public Author getOne(String id) {
-        try {
-            return repository.findById(id).orElse(null);
-
-        } catch (Exception ex) {
-            return null;
-        }
+        return repository.findById(id).orElseThrow(() -> new RuntimeException("Author Id is not found"));
     }
 
     /**
@@ -68,12 +60,7 @@ public class AuthorServiceImpl implements AuthorService {
      */
     @Override
     public List<Author> getAll() {
-        try {
-            return repository.findAll();
-
-        } catch (Exception ex) {
-            return Collections.emptyList();
-        }
+        return repository.findAll();
     }
 
     /**

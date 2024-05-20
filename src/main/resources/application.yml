@@ -9,6 +9,9 @@ spring:
     timeout-per-shutdown-phase: 20s
   application:
     name: spring-boot-k8s
+  data:
+    mongodb:
+      uri: mongodb+srv://${MONGODB_LOGIN}:${MONGODB_PWD}@${MONGODB_URL}/${MONGODB_DATABASE}?${MONGODB_OPTS}
 
 # Log incoming requests.
 logging:

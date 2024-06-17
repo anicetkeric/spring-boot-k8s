@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: burstable-pod
+  namespace: rs-demo
+spec:
+  containers:
+  - name: burstable-container-demo
+    image: nginx
+    resources:
+      limits:
+        memory: "200Mi"
+      requests:
+        memory: "100Mi"

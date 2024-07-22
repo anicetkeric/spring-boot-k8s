@@ -1,0 +1,63 @@
+# Default values for lab-helm-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 2
+
+image:
+  repository: spring-boot-k8s
+  pullPolicy: Never
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: NodePort
+  port: 8080
+  targetPort: 8080
+
+podAnnotations: {}
+podLabels: {}
+
+resources:
+  limits:
+    cpu: "1"
+    memory: 256Mi
+  requests:
+    cpu: 500m
+    memory: 128Mi
+
+livenessProbe:
+  httpGet:
+    path: /actuator/health/liveness
+    port: http
+  initialDelaySeconds: 15
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 10     
+readinessProbe:
+  httpGet:
+    path: /actuator/health/readiness
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 2
+  failureThreshold: 3  
+
+configmap:
+  values:
+    MONGODB_URL: cluster0.xpkhnmq.mongodb.net
+    MONGODB_DATABASE: library_db
+    MONGODB_OPTS: retryWrites=true&w=majority
+
+# replace the secret values with yours
+# can be used with external Secrets
+secrets:
+  values:
+    MONGODB_LOGIN: admin
+    MONGODB_PWD: admin
+
+

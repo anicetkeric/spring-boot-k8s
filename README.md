@@ -26,6 +26,7 @@ Clone the project
 
 [Lab 5](https://boottechnologies-ci.medium.com/lab5-spring-boot-k8s-understanding-kubernetes-resources-management-8b6188d3b9b6)
 
+[Lab 8](https://boottechnologies-ci.medium.com/lab8-spring-boot-k8s-deploy-a-spring-boot-application-on-kubernetes-using-helm-chart-9847a11633cc)
 
 ## Authors
 

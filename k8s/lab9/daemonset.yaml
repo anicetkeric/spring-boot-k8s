@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd
+spec:
+  selector:
+    matchLabels:
+      name: fluentd
+      tier: logging
+  template:
+    metadata:
+      labels:
+        name: fluentd
+        tier: logging
+    spec:
+      containers:
+        - name: fluentd-elasticsearch
+          image: quay.io/fluentd_elasticsearch/fluentd:latest
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              memory: "256Mi"    

@@ -28,6 +28,8 @@ Clone the project
 
 [Lab 8](https://boottechnologies-ci.medium.com/lab8-spring-boot-k8s-deploy-a-spring-boot-application-on-kubernetes-using-helm-chart-9847a11633cc)
 
+[Lab 9](https://boottechnologies-ci.medium.com/lab9-spring-boot-k8s-understanding-kubernetes-daemonset-c1c12ea7c7ea)
+
 ## Authors
 
 👤 **anicetkeric**

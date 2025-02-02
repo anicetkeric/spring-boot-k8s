@@ -64,18 +64,18 @@ spec:
             httpGet:
               path: /actuator/health/liveness
               port: 8080
-            initialDelaySeconds: 15
-            periodSeconds: 5
+            initialDelaySeconds: 30
+            periodSeconds: 20
             timeoutSeconds: 2
-            failureThreshold: 1
+            failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness
               port: 8080
-            initialDelaySeconds: 5
-            periodSeconds: 5
+            initialDelaySeconds: 30
+            periodSeconds: 20
             timeoutSeconds: 2
-            failureThreshold: 1
+            failureThreshold: 3
           env: # array of environment variable definitions
             - name: MONGODB_URL
               valueFrom: # select individual keys in a ConfigMap
